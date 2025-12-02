@@ -1,0 +1,19 @@
+1;Andalucía
+2;Aragón
+3;Asturias
+4;Islas Baleares
+5;Canarias
+6;Cantabria
+7;Castilla-La Mancha
+8;Castilla y León
+9;Cataluña
+10;Valencia
+11;Extremadura
+12;Galicia
+13;La Rioja
+14;Madrid
+15;Murcia
+16;Navarra
+17;País Vasco 
+18;Ceuta
+19;Melilla 
