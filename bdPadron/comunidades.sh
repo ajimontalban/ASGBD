@@ -12,6 +12,7 @@ while IFS=\; read cod comunidad;do
     echo "INSERT INTO taComunidades VALUES ($cod, \"$comunidad\");"
 done < comunidades_autonomas_ref.txt
 
+
 echo -e "\nALTER TABLE taProvincias
 ADD COLUMN iRefComunidad int NOT NULL"
 
