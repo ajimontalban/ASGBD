@@ -11,3 +11,18 @@ UPDATE taProvincias SET vaNomProvincia = "Lérida" WHERE vaNomProvincia LIKE 'Ll
 UPDATE taProvincias SET vaNomProvincia = "Orense" WHERE vaNomProvincia LIKE 'Oure%';
 UPDATE taProvincias SET vaNomProvincia = "Valencia" WHERE vaNomProvincia LIKE 'Valencia%';
 UPDATE taProvincias SET vaNomProvincia = "Vizcaya" WHERE vaNomProvincia LIKE 'Bizkaia';
+
+
+ALTER TABLE taPoblacion
+ADD COLUMN iPoblacion INTEGER AS (iHombres + iMujeres) VIRTUAL;
+
+
+CREATE TABLE IF NOT EXISTS taComunidades (
+    iCodComunidad int NOT NULL AUTO INCREMENT,
+    vaNomComunidad varchar(50),
+    PRIMARY KEY iCodComunidad
+);
+
+
+
+
