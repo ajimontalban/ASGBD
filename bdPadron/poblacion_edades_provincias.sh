@@ -56,8 +56,8 @@ for datos in H$hombres M$mujeres;do
                 periodo2=${periodo2//.}
                 # Expandeme esta variable pero antes sustituyeme la oprimero aparicion de una coma por un punto
                 periodo2=${periodo2/,/.}
-                echo "INSERT INTO taPoblacionEdadesProvincias VALUES ($iRefProvincia, $anio, '1', $sexo, $edad, $periodo1);"
-                echo "INSERT INTO taPoblacionEdadesProvincias VALUES ($iRefProvincia, $anio, '2', $sexo, $edad, $periodo2);"
+                echo "INSERT INTO taPoblacionEdadesProvincias VALUES ($iRefProvincia, $anio, '1', \"$sexo\", $edad, $periodo1);"
+                echo "INSERT INTO taPoblacionEdadesProvincias VALUES ($iRefProvincia, $anio, '2', \"$sexo\", $edad, $periodo2);"
                 anio=$((anio-1))
             done
         done

@@ -44,7 +44,7 @@ INSERT INTO taComunidades (vaNomComunidad) VALUES ("Ceuta");
 INSERT INTO taComunidades (vaNomComunidad) VALUES ("Melilla");
 
 ALTER TABLE taProvincias
-ADD COLUMN iRefComuniad INT NOT NULL;
+ADD COLUMN iRefComunidad INT NOT NULL;
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Andalucía")
@@ -60,7 +60,7 @@ WHERE vaNomProvincia = 'Asturias';
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Islas Baleares")
-WHERE vaNomProvincia  'Islas Baleares';
+WHERE vaNomProvincia  = 'Islas Baleares';
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Canarias")
@@ -68,7 +68,7 @@ WHERE vaNomProvincia in  ('Palmas, Las','Santa Cruz de Tenerife');
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Cantabria")
-WHERE vaNomProvincia in 'Cantabria';
+WHERE vaNomProvincia = 'Cantabria';
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Castilla y León")
@@ -120,4 +120,4 @@ WHERE vaNomProvincia = 'Ceuta';
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Melilla")
-WHERE vaNomProvincia 'Melilla';
+HERE vaNomProvincia = 'Melilla';
