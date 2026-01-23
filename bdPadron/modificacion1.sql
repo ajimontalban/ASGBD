@@ -108,7 +108,7 @@ WHERE vaNomProvincia = 'Navarra';
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "País Vasco")
-WHERE vaNomProvincia in ('Álava','Gipúzcoa','Vizcaya');
+WHERE vaNomProvincia in ('Álava','Guipúzcoa','Vizcaya');
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Valencia")
@@ -120,4 +120,4 @@ WHERE vaNomProvincia = 'Ceuta';
 
 UPDATE taProvincias 
 SET iRefComunidad = (SELECT iCodComunidad FROM taComunidades WHERE vaNomComunidad = "Melilla")
-HERE vaNomProvincia = 'Melilla';
+WHERE vaNomProvincia = 'Melilla';
