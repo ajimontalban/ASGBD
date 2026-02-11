@@ -1,0 +1,8 @@
+DROP PROCEDURE IF EXISTS prComMasMunicipios;
+DELIMITER //
+CREATE PROCEDURE prComMasMunicipios(OUT _vaNomComunidadMasMunicipios VARCHAR(50))
+BEGIN
+
+END//
+DELIMITER;
+
