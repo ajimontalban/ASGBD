@@ -5,6 +5,7 @@ BEGIN
     select vaNomMunicipio
     from taMunicipios,taProvincias
     where iRefProvincia = iCodProvincia 
-    and vaNomProvincia = _vaNomProvincia;
+    and vaNomProvincia = _vaNomProvincia
+    order by vaNomMunicipio asc;
 END //
 DELIMITER ;
