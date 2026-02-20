@@ -1,6 +1,6 @@
-DROP PROCEDURE IF EXISTS prComunidadesMasMunicipios;
+DROP PROCEDURE IF EXISTS prComunidadesMenosMunicipios;
 DELIMITER //
-CREATE PROCEDURE prComunidadesMasMunicipios()
+CREATE PROCEDURE prComunidadesMenosMunicipios()
 BEGIN
     DECLARE _iFinCursor INT;
     DECLARE _sumamunicipios INT;
