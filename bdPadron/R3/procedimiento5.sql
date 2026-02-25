@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS prNacimientosNiñas;
+DROP PROCEDURE IF EXISTS prNacimientosNinas;
 DELIMITER //
-CREATE PROCEDURE prNacimientosNiñas(IN _anio INT); -- posible variable de entrada `edad` para reusar
-BEGIN                                   -- el cursor
+CREATE PROCEDURE prNacimientosNinas(IN _anio INT)
+BEGIN
     DECLARE _iFinCursor1 INT;
     DECLARE _iCodProvincia INT;
     DECLARE _vaNomProvincia VARCHAR(40);
@@ -27,7 +27,32 @@ BEGIN                                   -- el cursor
     SET _anio3 = _anio2 - 1;
     SET _anio4 = _anio3 - 1;
     
-    
+    OPEN curProvincia;
 
+    FETCH curProvincia INTO _iCodProvincia, _vaNomProvincia;
+    WHILE (_iFinCursor1 = 0) DO
+        SET _dPob1 = (SELECT sum(dPoblacion) FROM taPoblacionEdadesProvincias
+        WHERE iAnio = _anio1 and cSexo = 'M' and iPeriodo = 2 and iEdad = 0 and 
+        iRefProvincia = _iCodProvincia);
+        SET _dPob2 = (SELECT sum(dPoblacion) FROM taPoblacionEdadesProvincias
+        WHERE iAnio = _anio2 and cSexo = 'M' and iPeriodo = 2 and iEdad = 0 and 
+        iRefProvincia = _iCodProvincia);
+        SET _dPob3 = (SELECT sum(dPoblacion) FROM taPoblacionEdadesProvincias
+        WHERE iAnio = _anio3 and cSexo = 'M' and iPeriodo = 2 and iEdad = 0 and 
+        iRefProvincia = _iCodProvincia);
+        SET _dPob4 = (SELECT sum(dPoblacion) FROM taPoblacionEdadesProvincias
+        WHERE iAnio = _anio4 and cSexo = 'M' and iPeriodo = 2 and iEdad = 0 and 
+        iRefProvincia = _iCodProvincia);
+        IF(_dPob1 < _dPob2 && _dPob2 < _dPob3 && _dPob3 < _dPob4) THEN
+            INSERT INTO taSalida (NombreProvincia, Pob1,Pob2, Pob3, Pob4)
+            VALUES (_vaNomProvincia, _dPob1,_dPob2,_dPob3,_dPob4);
+        END IF;
+        FETCH curProvincia INTO _iCodProvincia, _vaNomProvincia;
+    END WHILE;
+
+    SELECT * FROM taSalida;
+
+    CLOSE curProvincia;
+    DROP TEMPORARY TABLE taSalida;
 END //
 DELIMITER ;
