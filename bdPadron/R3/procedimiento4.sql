@@ -9,7 +9,7 @@ BEGIN
     DECLARE _vaNomProvincia VARCHAR(40);
 
     DECLARE curProvincias CURSOR FOR
-        SELECT iCodProvincia FROM taProvincias;
+        SELECT iCodProvincia, vaNomProvincia FROM taProvincias;
 
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET _iFinCursor = 1;
 
@@ -24,7 +24,7 @@ BEGIN
     
     OPEN curProvincias;
 
-    FETCH curProvincias INTO _iCodProvincia;
+    FETCH curProvincias INTO _iCodProvincia, _vaNomProvincia;
     WHILE _iFinCursor = 0 DO
         select  sum(dPoblacion) INTO _dHombres FROM taPoblacionEdadesProvincias 
         WHERE iRefProvincia = _iCodProvincia AND iAnio = 2022 
@@ -35,12 +35,10 @@ BEGIN
         AND iPeriodo = 2 AND cSexo = 'M' AND iEdad >= 18;
 
         IF _dHombres > _dMujeres THEN
-            SET _vaNomProvincia = (SELECT vaNomProvincia FROM taProvincias
-            WHERE iCodProvincia = _iCodProvincia);
             INSERT INTO taSalida (NombreProvincia, PobHombres, PobMujeres)
             VALUES (_vaNomProvincia, _dHombres, _dMujeres);
         END IF;
-        FETCH curProvincias INTO _iCodProvincia;
+        FETCH curProvincias INTO _iCodProvincia, _vaNomProvincia;
     END WHILE;
 
     SELECT *  FROM taSalida;
